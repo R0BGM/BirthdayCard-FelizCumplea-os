@@ -1,0 +1,142 @@
+/* ============================================================
+   ANIMATIONS — Keyframes & Motion Rules
+   ============================================================ */
+
+/* ── Page load fade in ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Gentle float for background shapes ── */
+@keyframes floatA {
+  0%, 100% { transform: translateY(0)   rotate(0deg);   }
+  50%       { transform: translateY(-28px) rotate(8deg);  }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0)   rotate(0deg);   }
+  50%       { transform: translateY(22px) rotate(-6deg); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translate(0, 0)   scale(1);     }
+  50%       { transform: translate(18px, -14px) scale(1.06); }
+}
+
+/* ── Title entrance ── */
+@keyframes titleReveal {
+  0%   { opacity: 0; transform: translateY(60px) scale(0.85); }
+  70%  { opacity: 1; transform: translateY(-8px) scale(1.03);  }
+  100% { opacity: 1; transform: translateY(0)   scale(1);      }
+}
+
+/* ── Pulse glow on envelope seal ── */
+@keyframes sealPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 77, 125, 0.7); transform: scale(1); }
+  50%       { box-shadow: 0 0 0 18px rgba(255, 77, 125, 0); transform: scale(1.08); }
+}
+
+/* ── Envelope wobble on hover ── */
+@keyframes envWobble {
+  0%,100% { transform: rotate(0deg); }
+  25%     { transform: rotate(-3deg); }
+  75%     { transform: rotate(3deg); }
+}
+
+/* ── Envelope open: flap lifts ── */
+@keyframes flapOpen {
+  0%   { transform: rotateX(0deg);    }
+  100% { transform: rotateX(-180deg); }
+}
+
+/* ── Card rise (fixed positioning — centered in viewport) ── */
+@keyframes cardRiseFixed {
+  0%   { opacity: 0; transform: translate(-50%, -30%) scale(0.88) rotateX(20deg); }
+  60%  { opacity: 1; transform: translate(-50%, -52%) scale(1.02) rotateX(-2deg); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1)    rotateX(0deg); }
+}
+
+/* ── Card rise from envelope ── */
+@keyframes cardRise {
+  0%   { opacity: 0; transform: translateY(60px) scale(0.88) rotateX(20deg); }
+  60%  { opacity: 1; transform: translateY(-12px) scale(1.02) rotateX(-2deg); }
+  100% { opacity: 1; transform: translateY(0)     scale(1)    rotateX(0deg); }
+}
+
+/* ── Shimmer stripe across card ── */
+@keyframes shimmer {
+  0%   { background-position: -300% center; }
+  100% { background-position:  300% center; }
+}
+
+/* ── Card title bounce letters ── */
+@keyframes letterBounce {
+  0%, 100% { transform: translateY(0); }
+  40%       { transform: translateY(-14px); }
+  60%       { transform: translateY(-6px); }
+}
+
+/* ── Card glow pulse ── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.98); }
+  50%       { opacity: 0.9; transform: scale(1.04); }
+}
+
+/* ── Confetti fall ── */
+@keyframes confettiFall {
+  0%   { transform: translateY(-120px) rotate(0deg)   scaleX(1); opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(110vh)  rotate(720deg) scaleX(-1); opacity: 0; }
+}
+
+/* ── Balloon rise ── */
+@keyframes balloonRise {
+  0%   { transform: translateY(115vh) rotate(var(--sway-start, -5deg)); opacity: 0; }
+  10%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { transform: translateY(-20vh) rotate(var(--sway-end, 5deg)); opacity: 0; }
+}
+
+/* ── Balloon sway ── */
+@keyframes balloonSway {
+  0%, 100% { transform: rotate(var(--sway-start, -5deg)); }
+  50%       { transform: rotate(var(--sway-end,   5deg)); }
+}
+
+/* ── Star twinkle ── */
+@keyframes starTwinkle {
+  0%, 100% { opacity: 1;   transform: scale(1) rotate(0deg);   }
+  50%       { opacity: 0.4; transform: scale(0.7) rotate(90deg); }
+}
+
+/* ── Subtitle pulse ── */
+@keyframes subtitlePulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.03); }
+}
+
+/* ── Card message word appear ── */
+@keyframes wordAppear {
+  0%   { opacity: 0; transform: translateY(12px) scale(0.95); }
+  100% { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+/* ── BG Canvas particle drift ── */
+@keyframes drift {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-100vh); }
+}
+
+/* ── Footer tag bounce in ── */
+@keyframes footerIn {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Prefers reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration:   0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration:  0.01ms !important;
+  }
+}
