@@ -1,0 +1,108 @@
+/* ============================================================
+   PARTICLES — Confetti & Balloon element styles
+   ============================================================ */
+
+/* ── Confetti piece ── */
+.confetti-piece {
+  position: absolute;
+  top: -20px;
+  width: var(--size, 10px);
+  height: var(--size, 10px);
+  background-color: var(--color, #FF4D7D);
+  border-radius: var(--radius, 2px);
+  opacity: 0;
+  animation: confettiFall var(--duration, 3s) var(--delay, 0s) ease-in forwards;
+  left: var(--left, 50%);
+}
+
+/* Shapes: rectangle, circle, triangle */
+.confetti-piece[data-shape="circle"] {
+  border-radius: 50%;
+}
+.confetti-piece[data-shape="triangle"] {
+  width: 0;
+  height: 0;
+  background: transparent !important;
+  border-left: calc(var(--size, 10px) / 2) solid transparent;
+  border-right: calc(var(--size, 10px) / 2) solid transparent;
+  border-bottom: var(--size, 10px) solid var(--color, #FF4D7D);
+}
+.confetti-piece[data-shape="star"] {
+  background: transparent !important;
+  width: var(--size, 12px);
+  height: var(--size, 12px);
+  /* drawn via clip-path star */
+  clip-path: polygon(
+    50% 0%, 61% 35%, 98% 35%, 68% 57%,
+    79% 91%, 50% 70%, 21% 91%, 32% 57%,
+    2% 35%, 39% 35%
+  );
+  background-color: var(--color, #FFD93D) !important;
+}
+
+/* ── Balloon ── */
+.balloon {
+  position: absolute;
+  bottom: -200px;
+  left: var(--left, 50%);
+  animation:
+    balloonRise var(--rise-duration, 6s) var(--delay, 0s) ease-out forwards,
+    balloonSway 2.5s ease-in-out var(--delay, 0s) infinite;
+  --sway-start: -6deg;
+  --sway-end: 6deg;
+}
+
+.balloon-body {
+  width: var(--balloon-size, 60px);
+  height: calc(var(--balloon-size, 60px) * 1.2);
+  background: radial-gradient(
+    circle at 35% 30%,
+    rgba(255,255,255,0.45) 0%,
+    var(--balloon-color, #FF4D7D) 50%,
+    var(--balloon-shadow, #C2185B) 100%
+  );
+  border-radius: 50% 50% 50% 50% / 55% 55% 45% 45%;
+  position: relative;
+  box-shadow: inset -4px -4px 12px rgba(0,0,0,0.15);
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.25));
+}
+
+/* Balloon highlight */
+.balloon-body::before {
+  content: '';
+  position: absolute;
+  top: 14%;
+  left: 22%;
+  width: 28%;
+  height: 18%;
+  background: rgba(255,255,255,0.55);
+  border-radius: 50%;
+  transform: rotate(-30deg);
+}
+
+/* Balloon tie */
+.balloon-body::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: var(--balloon-shadow, #C2185B);
+  clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+}
+
+/* Balloon string */
+.balloon-string {
+  width: 1.5px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    var(--balloon-color, #FF4D7D),
+    rgba(255,255,255,0.3)
+  );
+  margin: 0 auto;
+  position: relative;
+  /* wavy string SVG filter handled in JS */
+}

@@ -1,0 +1,206 @@
+/* ============================================================
+   LAYOUT — Global structure, background, typography scaffold
+   ============================================================ */
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin:  0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  color: var(--color-text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  /* Memphis-style subtle noise */
+  background-image:
+    radial-gradient(ellipse 80% 60% at 20% 10%,  rgba(108,99,255,0.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 90%,  rgba(255,77,125,0.2)  0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 50% 50%,  rgba(0,217,192,0.08)  0%, transparent 70%);
+}
+
+/* ── BG Canvas (behind everything) ── */
+#bgCanvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Floating background shapes (Memphis blobs) ── */
+.bg-shapes {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  opacity: 0.12;
+}
+
+.shape-1 {
+  width: 520px; height: 520px;
+  background: var(--color-primary);
+  top: -160px; left: -160px;
+  animation: floatA 9s ease-in-out infinite;
+}
+.shape-2 {
+  width: 380px; height: 380px;
+  background: var(--color-accent-1);
+  bottom: -100px; right: -100px;
+  animation: floatB 11s ease-in-out infinite;
+}
+.shape-3 {
+  width: 240px; height: 240px;
+  background: var(--color-secondary);
+  top: 40%; left: 5%;
+  animation: floatC 7s ease-in-out infinite;
+}
+.shape-4 {
+  width: 180px; height: 180px;
+  background: var(--color-accent-2);
+  top: 20%; right: 8%;
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: floatA 13s ease-in-out infinite reverse;
+}
+.shape-5 {
+  width: 300px; height: 300px;
+  background: var(--color-accent-3);
+  bottom: 10%; left: 20%;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  animation: floatB 8s ease-in-out infinite 2s;
+}
+
+/* ── Page Wrapper ── */
+.page-wrapper {
+  position: relative;
+  z-index: 10;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 32px;
+}
+
+/* ── Header ── */
+.page-header {
+  text-align: center;
+  animation: fadeInUp var(--duration-slow) var(--ease-smooth) 0.2s both;
+}
+
+.star-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.star-icon {
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+  animation: starTwinkle 2s ease-in-out infinite;
+}
+.star-icon:nth-child(2) { animation-delay: 0.3s; color: var(--color-accent-2); }
+.star-icon:nth-child(3) { animation-delay: 0.6s; }
+.star-icon:nth-child(4) { animation-delay: 0.9s; color: var(--color-accent-2); }
+.star-icon:nth-child(5) { animation-delay: 1.2s; }
+
+.header-tag {
+  font-family: var(--font-script);
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* ── Title Section ── */
+.title-section {
+  text-align: center;
+  animation: fadeInUp var(--duration-slow) var(--ease-smooth) 0.4s both;
+}
+
+.main-title {
+  font-family: var(--font-display);
+  line-height: 1.0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  user-select: none;
+}
+
+.title-line-1 {
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  color: var(--color-secondary);
+  text-shadow: var(--shadow-text), 0 0 40px rgba(255,217,61,0.5);
+  animation: titleReveal 0.9s var(--ease-bounce) 0.6s both;
+  display: block;
+}
+
+.title-line-2 {
+  font-size: clamp(2.4rem, 6.5vw, 4.2rem);
+  color: var(--color-primary);
+  text-shadow: var(--shadow-text), 0 0 40px rgba(255,77,125,0.5);
+  animation: titleReveal 0.9s var(--ease-bounce) 0.85s both;
+  display: block;
+}
+
+.subtitle {
+  margin-top: 14px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  letter-spacing: 0.03em;
+  animation: subtitlePulse 3s ease-in-out infinite;
+}
+
+/* ── Card Stage (defined in card.css) ── */
+
+/* ── Footer ── */
+.page-footer {
+  text-align: center;
+  animation: footerIn var(--duration-slow) var(--ease-smooth) 1s both;
+}
+
+.footer-note {
+  font-family: var(--font-script);
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  margin-top: 8px;
+}
+
+/* ── Confetti Layer ── */
+.confetti-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── Balloon Layer ── */
+.balloon-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 998;
+  pointer-events: none;
+  overflow: hidden;
+}

@@ -1,0 +1,232 @@
+/* ============================================================
+   RESPONSIVE — Mobile-first breakpoints
+   Breakpoints: 375px · 480px · 768px · 1024px · 1440px
+   ============================================================ */
+
+/* ════════════════════════════════
+   BASE MOBILE — 375px
+   ════════════════════════════════ */
+
+/* Envelope smaller on mobile */
+:root {
+  --envelope-w: min(340px, 88vw);
+  --envelope-h: min(230px, 60vw);
+  --card-w:     min(380px, 92vw);
+  --card-h:     auto;
+}
+
+/* Page wrapper tighter on mobile */
+.page-wrapper {
+  padding: 32px 16px;
+  gap: 24px;
+}
+
+/* Titles scale down */
+.title-line-1 {
+  font-size: clamp(2.6rem, 12vw, 6rem);
+}
+.title-line-2 {
+  font-size: clamp(1.8rem, 8vw, 4.2rem);
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  padding: 0 8px;
+}
+
+/* Header & footer */
+.header-tag  { font-size: 1rem; }
+.footer-note { font-size: 1rem; }
+
+/* Card: fluid width + auto height on mobile */
+.birthday-card {
+  width: min(var(--card-w), 92vw);
+  min-height: unset;
+  padding: 28px 20px 24px;
+}
+
+.card-title       { font-size: clamp(1.6rem, 6vw, 2.4rem); }
+.card-title--big  { font-size: clamp(2rem,   9vw, 3.4rem); }
+.card-message     { font-size: clamp(0.88rem, 3.2vw, 1.1rem); }
+
+.card-deco-top,
+.card-deco-bottom { font-size: 1.2rem; gap: 8px; }
+
+/* Envelope triangles must recalculate with fluid width */
+.envelope-left {
+  border-width: var(--envelope-h) 0 0 calc(var(--envelope-w) / 2);
+}
+.envelope-right {
+  border-width: var(--envelope-h) calc(var(--envelope-w) / 2) 0 0;
+}
+.envelope-bottom {
+  border-width: 0
+    calc(var(--envelope-w) / 2)
+    calc(var(--envelope-h) * 0.55)
+    calc(var(--envelope-w) / 2);
+}
+.envelope-flap {
+  border-width:
+    calc(var(--envelope-h) * 0.52)
+    calc(var(--envelope-w) / 2)
+    0
+    calc(var(--envelope-w) / 2);
+}
+
+/* Seal smaller on mobile */
+.envelope-seal {
+  width: 54px;
+  height: 54px;
+  font-size: 1.5rem;
+}
+
+/* card-stage min-height fluid */
+.card-stage {
+  min-height: min(var(--card-h), 90vh);
+}
+
+/* Reduce bg shapes so they don't overwhelm small screens */
+.shape-1 { width: 280px; height: 280px; }
+.shape-2 { width: 200px; height: 200px; }
+.shape-3 { width: 140px; height: 140px; }
+.shape-4 { width: 110px; height: 110px; }
+.shape-5 { width: 180px; height: 180px; }
+
+/* ════════════════════════════════
+   SMALL PHONES — up to 480px
+   ════════════════════════════════ */
+@media (max-width: 480px) {
+
+  .page-wrapper { gap: 20px; padding: 24px 14px; }
+
+  .title-line-1 { font-size: clamp(2.2rem, 13vw, 3.2rem); }
+  .title-line-2 { font-size: clamp(1.5rem, 9vw,  2.4rem); }
+
+  .subtitle { font-size: 0.82rem; }
+
+  .card-title      { font-size: 1.5rem; }
+  .card-title--big { font-size: 2rem; }
+  .card-message    { font-size: 0.82rem; line-height: 1.5; }
+  .signature-line  { font-size: 0.8rem; }
+
+  .card-deco-top,
+  .card-deco-bottom { font-size: 1rem; gap: 6px; }
+
+  .birthday-card { padding: 22px 16px 20px; }
+
+  .star-icon { font-size: 0.9rem; }
+  .star-row  { gap: 10px; }
+}
+
+/* ════════════════════════════════
+   TABLET — 768px and up
+   ════════════════════════════════ */
+@media (min-width: 768px) {
+
+  :root {
+    --envelope-w: 380px;
+    --envelope-h: 260px;
+    --card-w:     420px;
+  }
+
+  .page-wrapper { padding: 48px 32px; gap: 32px; }
+
+  .title-line-1 { font-size: clamp(4rem, 7vw, 6rem); }
+  .title-line-2 { font-size: clamp(2.8rem, 5vw, 4.2rem); }
+
+  .subtitle    { font-size: 1.05rem; }
+  .header-tag  { font-size: 1.2rem; }
+  .footer-note { font-size: 1.25rem; }
+
+  .card-title       { font-size: 2.4rem; }
+  .card-title--big  { font-size: 3.4rem; }
+  .card-message     { font-size: 1.1rem; }
+  .signature-line   { font-size: 1.05rem; }
+
+  .card-deco-top,
+  .card-deco-bottom { font-size: 1.6rem; gap: 12px; }
+
+  .birthday-card { padding: 36px 32px 32px; }
+
+  .envelope-seal { width: 68px; height: 68px; font-size: 1.9rem; }
+
+  .shape-1 { width: 420px; height: 420px; }
+  .shape-2 { width: 300px; height: 300px; }
+  .shape-3 { width: 200px; height: 200px; }
+  .shape-4 { width: 160px; height: 160px; }
+  .shape-5 { width: 260px; height: 260px; }
+}
+
+/* ════════════════════════════════
+   DESKTOP — 1024px and up
+   ════════════════════════════════ */
+@media (min-width: 1024px) {
+
+  :root {
+    --envelope-w: 400px;
+    --envelope-h: 270px;
+    --card-w:     440px;
+    --card-h:     560px;
+  }
+
+  .page-wrapper { padding: 56px 40px; gap: 36px; }
+
+  .shape-1 { width: 520px; height: 520px; }
+  .shape-2 { width: 380px; height: 380px; }
+  .shape-3 { width: 240px; height: 240px; }
+  .shape-4 { width: 180px; height: 180px; }
+  .shape-5 { width: 300px; height: 300px; }
+}
+
+/* ════════════════════════════════
+   WIDE DESKTOP — 1440px and up
+   ════════════════════════════════ */
+@media (min-width: 1440px) {
+
+  :root {
+    --card-w: 460px;
+  }
+
+  .title-line-1 { font-size: 6.5rem; }
+  .title-line-2 { font-size: 4.5rem; }
+}
+
+/* ════════════════════════════════
+   LANDSCAPE PHONES — short screens
+   ════════════════════════════════ */
+@media (max-height: 600px) and (orientation: landscape) {
+
+  .page-wrapper {
+    padding: 16px 24px;
+    gap: 14px;
+  }
+
+  .title-line-1 { font-size: 2.2rem; }
+  .title-line-2 { font-size: 1.6rem; }
+
+  .page-header,
+  .page-footer  { display: none; }
+
+  .birthday-card {
+    padding: 16px 20px;
+  }
+
+  .card-title      { font-size: 1.4rem; }
+  .card-title--big { font-size: 1.9rem; }
+  .card-message    { font-size: 0.82rem; }
+}
+
+/* ════════════════════════════════
+   TOUCH DEVICES — remove hover wobble
+   ════════════════════════════════ */
+@media (hover: none) {
+  .envelope-wrapper:hover .envelope {
+    animation: none;
+    transform: none;
+  }
+  /* Replace hover with active tap feedback */
+  .envelope-wrapper:active .envelope {
+    transform: scale(0.96);
+    transition: transform 0.12s ease;
+  }
+}
